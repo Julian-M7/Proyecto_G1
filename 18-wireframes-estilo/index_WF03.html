@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe WF-P10 - Martín Pescador</title>
+  <style>
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    body {
+      background-color: #d1d5db;
+      padding: 30px;
+      color: #1f2937;
+      display: flex;
+      justify-content: center;
+    }
+    /* Lienzo estilo plantilla móvil */
+    .wf-canvas {
+      width: 375px;
+      background: #f9fafb;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .wf-top-meta {
+      background: #e5e7eb;
+      color: #6b7280;
+      padding: 6px 12px;
+      font-size: 10px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #d1d5db;
+    }
+    .app-header {
+      background: #ffffff;
+      padding: 12px 16px;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #111827;
+    }
+    .brand-logo {
+      width: 24px;
+      height: 24px;
+      background: #d1d5db;
+      border-radius: 4px;
+    }
+    .back-btn {
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #374151;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .sub-header {
+      background: #f3f4f6;
+      padding: 5px 16px;
+      font-size: 10px;
+      color: #6b7280;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .wf-body {
+      padding: 16px;
+      flex: 1;
+    }
+    .page-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #111827;
+      margin: 0 0 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .page-desc {
+      font-size: 11px;
+      color: #6b7280;
+      margin: 0 0 12px 0;
+      line-height: 1.4;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #374151;
+      margin: 0 0 10px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    /* Resumen KPIs */
+    .kpi-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .kpi-box {
+      flex: 1;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 8px;
+      text-align: center;
+    }
+    .kpi-label { font-size: 10px; color: #6b7280; }
+    .kpi-val { font-size: 13px; font-weight: 700; color: #111827; margin-top: 2px; }
+
+    /* Gráfica estilo wireframe */
+    .chart-placeholder {
+      height: 120px;
+      border-bottom: 1px solid #9ca3af;
+      border-left: 1px solid #9ca3af;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      padding: 10px 8px 0 8px;
+      background: repeating-linear-gradient(
+        to top,
+        transparent,
+        transparent 29px,
+        #f3f4f6 30px
+      );
+    }
+    .bar-group {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 100%;
+    }
+    .bar-in { width: 14px; background: #4b5563; border-radius: 2px 2px 0 0; }
+    .bar-out { width: 14px; background: #9ca3af; border-radius: 2px 2px 0 0; }
+    .chart-labels {
+      display: flex;
+      justify-content: space-around;
+      font-size: 9px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+    .legend {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      font-size: 10px;
+      color: #4b5563;
+      margin-top: 8px;
+    }
+    .dot { width: 8px; height: 8px; display: inline-block; border-radius: 2px; margin-right: 4px; }
+
+    /* Tabla */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+    }
+    th {
+      background: #f3f4f6;
+      color: #4b5563;
+      font-weight: 600;
+      text-align: left;
+      padding: 6px 8px;
+      border-bottom: 1px solid #d1d5db;
+    }
+    td {
+      padding: 6px 8px;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+    }
+    /* Botones */
+    .btn {
+      width: 100%;
+      padding: 9px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      color: #374151;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn-primary {
+      background: #4b5563;
+      color: #ffffff;
+      border-color: #4b5563;
+    }
+    /* Círculos rojos de anotación */
+    .pin {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 15px;
+      height: 15px;
+      background-color: #dc2626;
+      color: #ffffff;
+      border-radius: 50%;
+      font-size: 9px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== WF-P10: REPORTE POR PERIODO DE TIEMPO ==================== -->
+  <div class="wf-canvas">
+    <div class="wf-top-meta">
+      <span>WF-P10 · Reporte por periodo · móvil · estado inicial</span>
+      <span>v1.0 · datos de ejemplo</span>
+    </div>
+    <div class="app-header">
+      <div class="brand">
+        <div class="brand-logo"></div>
+        <span>Martín Pescador <span style="font-weight:400; color:#6b7280;">| Finanzas</span></span>
+      </div>
+      <div class="back-btn">&lt;&lt;Volver&gt;&gt; <span class="pin">1</span></div>
+    </div>
+    <div class="sub-header">
+      <span>Sesión: Asesora_Fin</span>
+      <span>Origen: P-09</span>
+    </div>
+    <div class="wf-body">
+      <h1 class="page-title">Reporte (Noviembre 2026) <span class="pin">2</span></h1>
+      <p class="page-desc">Visualización de productividad: comparativo de ingresos y egresos del periodo seleccionado.</p>
+
+      <!-- Tarjetas de resumen -->
+      <div class="kpi-row">
+        <div class="kpi-box">
+          <div class="kpi-label">Ingresos</div>
+          <div class="kpi-val">$ 4.850.000</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Egresos</div>
+          <div class="kpi-val">$ 1.920.000</div>
+        </div>
+        <div class="kpi-box" style="background:#f3f4f6;">
+          <div class="kpi-label">Balance</div>
+          <div class="kpi-val">$ 2.930.000</div>
+        </div>
+      </div>
+
+      <!-- Gráfica de barras -->
+      <div class="card">
+        <div class="section-title">
+          <span>Gráfica comparativa</span>
+          <span class="pin">3</span>
+        </div>
+        <div class="chart-placeholder">
+          <div class="bar-group">
+            <div class="bar-in" style="height: 75%;"></div>
+            <div class="bar-out" style="height: 35%;"></div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-in" style="height: 90%;"></div>
+            <div class="bar-out" style="height: 45%;"></div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-in" style="height: 60%;"></div>
+            <div class="bar-out" style="height: 30%;"></div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-in" style="height: 85%;"></div>
+            <div class="bar-out" style="height: 40%;"></div>
+          </div>
+        </div>
+        <div class="chart-labels">
+          <span>Sem 1</span>
+          <span>Sem 2</span>
+          <span>Sem 3</span>
+          <span>Sem 4</span>
+        </div>
+        <div class="legend">
+          <span><i class="dot" style="background:#4b5563;"></i>Ingresos</span>
+          <span><i class="dot" style="background:#9ca3af;"></i>Egresos</span>
+        </div>
+      </div>
+
+      <!-- Tabla de datos -->
+      <div class="card" style="padding:0; overflow:hidden;">
+        <div style="padding:10px 12px 6px 12px;" class="section-title">
+          <span>Detalle de movimientos</span>
+          <span class="pin">4</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Tipo</th>
+              <th>Concepto</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>13/11</td>
+              <td>Ingreso</td>
+              <td>Ventas día</td>
+              <td>$ 650.000</td>
+            </tr>
+            <tr>
+              <td>13/11</td>
+              <td>Egreso</td>
+              <td>Insumos hielo</td>
+              <td>$ 120.000</td>
+            </tr>
+            <tr>
+              <td>12/11</td>
+              <td>Ingreso</td>
+              <td>Ventas día</td>
+              <td>$ 580.000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Acciones -->
+      <button class="btn btn-primary">🖨 Imprimir reporte <span class="pin">5</span></button>
+      <button class="btn">&lt;&lt;Volver&gt;&gt; a selección de periodo</button>
+    </div>
+  </div>
+
+</body>
+</html>
