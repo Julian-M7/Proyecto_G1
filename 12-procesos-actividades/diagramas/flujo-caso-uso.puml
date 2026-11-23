@@ -1,0 +1,29 @@
+@startuml
+title DAC-03 · Flujo del caso de uso CU-06 «Cerrar la caja»\nSGMP · v1.0 · 22/11/2026
+|Empleado|
+start
+:Solicita el cierre de caja;
+|SGMP|
+if (¿El turno ya tiene un cierre?) then ([sí])
+  :Muestra el cierre existente y rechaza el segundo;
+  note right: RF-029 (Sesión 3)
+  stop
+else ([no])
+endif
+:Calcula el total de ventas no anuladas y el total de egresos;
+:Calcula el saldo del día y el saldo en efectivo;
+|Empleado|
+:Cuenta el efectivo e ingresa el conteo;
+|SGMP|
+if (¿Conteo = saldo en efectivo?) then ([sí])
+else ([no])
+  :Pide una observación de la diferencia;
+  |Empleado|
+  :Escribe la observación;
+  |SGMP|
+endif
+:Registra el cierre con fecha, hora, usuario, conteo y diferencia;
+:Genera la copia de respaldo en el celular;
+:Cierra la sesión del usuario;
+stop
+@enduml

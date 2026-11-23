@@ -1,0 +1,49 @@
+@startuml
+title DAC-02 · Proceso futuro (TO-BE): jornada de venta y cierre de caja con el SGMP\nMartin Pescador · v1.0 · 22/11/2026
+|Empleado|
+start
+:Inicia sesión con su PIN;
+|SGMP|
+:Muestra el saldo de cierre anterior y el stock disponible;
+note right: B-05 RF-022 · B-07 RF-007
+if (¿El turno anterior quedó sin cierre?) then ([sí])
+  :Avisa al empleado y al jefe;
+  note right: RF-030 (Sesión 4)
+else ([no])
+endif
+|Empleado|
+:Cuenta el efectivo e ingresa el conteo de apertura;
+|SGMP|
+:Registra el conteo y la diferencia de apertura;
+note right: B-06 RF-026 (nuevo)
+repeat
+  |Cliente|
+  :Pide productos y pide la cuenta;
+  |Empleado|
+  :Registra la venta: productos, método de pago y canal;
+  |SGMP|
+  :Valida la venta y asigna el número de recibo;
+  note right: B-01 RF-001, RF-019 · B-02 RF-016
+  :Descuenta el stock y escribe el historial;
+  note right: B-03 RF-003, RF-015
+  if (¿Stock ≤ umbral mínimo?) then ([sí])
+    :Notifica bajo stock al jefe y a la asesora;
+  else ([no])
+  endif
+repeat while (¿Siguen llegando clientes?) is ([sí]) not ([no: fin del turno])
+|Empleado|
+:Solicita el cierre e ingresa el efectivo contado;
+|SGMP|
+:Calcula totales, saldo del día y saldo en efectivo;
+:Registra el cierre con la diferencia y genera la copia de respaldo;
+note right: B-04 RF-006, RF-025 (nuevo), RNF-001, RNF-005
+if (¿Hay diferencia de caja?) then ([sí])
+  |Jefe|
+  :Busca la venta por número de recibo y revisa el historial;
+else ([no])
+endif
+|Asesora|
+:Consolida ingresos y egresos en el SGMP (sin cuaderno);
+note right: B-09 RF-009
+stop
+@enduml

@@ -1,0 +1,31 @@
+@startuml dcu-02b-inventario-finanzas
+title DCU-02b · Vista «Inventario y finanzas» (CU-03, CU-04, CU-08 a CU-12, CU-18)\nSGMP · v1.0 · 22/11/2026
+left to right direction
+actor Jefe
+actor Asesora
+rectangle "SGMP" {
+  usecase "CU-18 Actualizar el catálogo\nde productos" as CU18
+  usecase "CU-03 Registrar un movimiento\nde inventario" as CU03
+  usecase "CU-10 Notificar bajo stock" as CU10
+  usecase "CU-04 Registrar un egreso" as CU04
+  usecase "CU-09 Consolidar ingresos\ny egresos" as CU09
+  usecase "CU-11 Consultar los reportes\nfinancieros" as CU11
+  usecase "CU-08 Buscar una venta por\nnúmero de recibo" as CU08
+  usecase "CU-12 Consultar la rotación\nde productos" as CU12
+}
+Jefe -- CU18
+Jefe -- CU03
+Jefe -- CU04
+Jefe -- CU08
+Jefe -- CU12
+Asesora -- CU04
+Asesora -- CU09
+Asesora -- CU11
+CU10 .> CU03 : <<extend>>\n[stock ≤ umbral mínimo]
+CU10 -- Jefe
+CU10 -- Asesora
+note right of CU10
+  También extiende CU-01 (DCU-02a).
+  Jefe y Asesora reciben la alerta.
+end note
+@enduml

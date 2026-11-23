@@ -1,0 +1,66 @@
+@startuml
+title DCL-01 · Modelo de dominio · vista «Ventas y caja»\nSGMP · v1.0 · 22/11/2026
+hide methods
+hide circle
+class Usuario {
+  nombre
+  perfil
+  activo
+}
+class Turno {
+  fechaApertura
+  conteoApertura
+  estado : Abierto | En cierre | Cerrado
+}
+class CierreCaja {
+  fechaHora
+  totalVentas
+  totalEgresos
+  saldoDia
+  saldoEfectivo
+  conteoEfectivo
+  diferencia
+  observacion
+}
+class Venta {
+  numeroRecibo
+  fechaHora
+  total
+  metodoPago : efectivo | transferencia
+  canal : mostrador | domicilio
+  estado : En registro | Registrada | Cerrada en caja | Anulada
+}
+class LineaVenta {
+  cantidad
+  precioUnitario
+  subtotal
+}
+class Producto {
+  nombre
+  precio
+  umbralMinimo
+  stock
+  vendible
+  estado : Activo | Inactivo
+}
+class ComprobantePago {
+  imagen
+  fechaHora
+}
+class CambioVenta {
+  tipo : edición | anulación
+  motivo
+  fechaHora
+  compensatorio
+}
+Usuario "1" -- "0..*" Turno : abre >
+Turno "1" -- "0..1" CierreCaja : se cierra con >
+Turno "1" -- "0..*" Venta : contiene >
+Usuario "1" -- "0..*" Venta : registra >
+Venta "1" *-- "1..*" LineaVenta
+LineaVenta "0..*" -- "1" Producto
+Venta "1" -- "0..1" ComprobantePago
+Venta "1" -- "0..*" CambioVenta
+Usuario "1" -- "0..*" CambioVenta : hace >
+note bottom of LineaVenta : RN-02: una venta tiene al menos una línea\n(multiplicidad decidida con la voz de la empleada)
+@enduml
