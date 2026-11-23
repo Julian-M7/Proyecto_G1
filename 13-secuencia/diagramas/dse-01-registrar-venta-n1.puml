@@ -1,0 +1,32 @@
+@startuml
+title DSE-01 · CU-01 «Registrar una venta» · ESC-01 principal y extensiones · nivel 1 (caja negra)\nSGMP · v1.0 · 22/11/2026
+actor Empleado
+participant SGMP
+actor Jefe
+actor Asesora
+Empleado -> SGMP : agregar producto (producto, cantidad)
+SGMP --> Empleado : línea agregada (precio, subtotal)
+alt 2a · stock insuficiente
+  SGMP --> Empleado : advertencia de stock insuficiente (permite continuar)
+end
+Empleado -> SGMP : elegir método de pago (y canal)
+SGMP --> Empleado : total de la venta
+opt 4a · pago por transferencia
+  Empleado -> SGMP : adjuntar comprobante de pago
+  SGMP --> Empleado : comprobante adjunto
+end
+Empleado -> SGMP : confirmar venta
+alt venta completa
+  SGMP -> SGMP : asignar número de recibo, descontar stock y escribir historial
+  SGMP --> Empleado : venta registrada (número de recibo, total)
+  note right of Empleado : RNF-004: ≤ 20 s desde el primer producto\nhasta aquí (mediana)
+  opt CU-10 · stock ≤ umbral mínimo
+    SGMP ->> Jefe : notificación de bajo stock (producto, cantidad)
+    SGMP ->> Asesora : notificación de bajo stock (producto, cantidad)
+  end
+else 5a · falta un dato obligatorio
+  SGMP --> Empleado : venta rechazada (dato que falta)
+else 5b · confirmación repetida (doble toque)
+  SGMP --> Empleado : misma venta (mismo número de recibo), sin duplicar
+end
+@enduml

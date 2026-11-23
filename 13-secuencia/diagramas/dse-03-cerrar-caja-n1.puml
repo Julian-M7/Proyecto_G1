@@ -1,0 +1,29 @@
+@startuml
+title DSE-03 · CU-06 «Cerrar la caja» · ESC-02 principal y extensiones · nivel 1\nSGMP · v1.0 · 22/11/2026
+actor Empleado
+participant SGMP
+actor Jefe
+actor "Equipo de respaldo" as EqR
+Empleado -> SGMP : solicitar cierre de caja
+alt 1a · el turno ya tiene un cierre
+  SGMP --> Empleado : cierre existente (rechaza el segundo)
+else turno sin cierre
+  SGMP --> Empleado : totales del día (ventas no anuladas, egresos, saldo del día, saldo en efectivo)
+  Empleado -> SGMP : ingresar efectivo contado
+  alt 3a · conteo distinto del saldo en efectivo
+    SGMP --> Empleado : diferencia y solicitud de observación
+    Empleado -> SGMP : registrar observación
+  end
+  SGMP -> SGMP : registrar cierre (fecha, hora, usuario, conteo, diferencia) y generar copia de respaldo
+  SGMP --> Empleado : cierre registrado; sesión cerrada
+  note right of Empleado : RNF-001: ≤ 3 min desde «solicitar cierre»\nhasta «cierre registrado»
+end
+== CU-17 (otro momento, semanal) ==
+Jefe -> SGMP : exportar copia de respaldo
+SGMP -> EqR : entregar archivo de respaldo (por USB)
+alt el equipo no recibe el archivo
+  SGMP --> Jefe : copia no entregada; la copia diaria sigue en el celular
+else recibido
+  SGMP --> Jefe : copia exportada (fecha, tamaño)
+end
+@enduml

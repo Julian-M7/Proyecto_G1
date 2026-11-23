@@ -1,0 +1,35 @@
+@startuml
+title DAC-04 · Flujo del caso de uso CU-01 «Registrar una venta»\nSGMP · v1.0 · 22/11/2026
+|Empleado|
+start
+repeat
+  :Busca y agrega un producto con su cantidad;
+  |SGMP|
+  if (¿Stock suficiente?) then ([sí])
+  else ([no])
+    :Advierte stock insuficiente y permite continuar;
+    note right: RF-023
+  endif
+  |Empleado|
+repeat while (¿Agrega otro producto?) is ([sí]) not ([no])
+:Elige el método de pago (y el canal, si aplica);
+if (¿Transferencia?) then ([sí])
+  :Adjunta el comprobante de pago;
+else ([no])
+endif
+:Confirma la venta;
+|SGMP|
+if (¿Venta completa?) then ([sí])
+  :Asigna el número de recibo y registra la venta;
+  :Descuenta el stock y escribe el historial;
+  if (¿Stock ≤ umbral mínimo?) then ([sí])
+    :Notifica bajo stock (CU-10);
+  else ([no])
+  endif
+  :Muestra el número de recibo y el total;
+else ([no])
+  :Rechaza la venta e indica el dato que falta;
+  note right: RF-019
+endif
+stop
+@enduml

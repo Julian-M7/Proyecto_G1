@@ -1,0 +1,61 @@
+@startuml
+title DCL-02 · Modelo de dominio · vista «Inventario, finanzas y acceso»\nSGMP · v1.0 · 22/11/2026
+hide methods
+hide circle
+class Producto {
+  nombre
+  precio
+  umbralMinimo
+  stock
+  estado
+}
+class MovimientoInventario {
+  tipo : entrada | salida | ajuste
+  cantidad
+  motivo
+  fechaHora
+}
+class NotificacionBajoStock {
+  stockEnElMomento
+  fechaHora
+}
+class Egreso {
+  valor
+  fecha
+  metodoPago
+}
+class CategoriaEgreso {
+  nombre
+}
+class ComprobantePago {
+  imagen
+}
+class Usuario {
+  nombre
+  pin
+  activo
+  avisoAceptado
+}
+class Perfil {
+  nombre : Empleado | Jefe | Asesora
+}
+class RegistroHistorial {
+  operacion
+  fechaHora
+  detalle
+}
+class CopiaRespaldo {
+  fechaHora
+  exportada
+}
+Producto "1" -- "0..*" MovimientoInventario
+Producto "1" -- "0..*" NotificacionBajoStock : genera >
+Usuario "1" -- "0..*" MovimientoInventario : registra >
+Egreso "0..*" -- "1" CategoriaEgreso
+Egreso "1" -- "0..1" ComprobantePago
+Usuario "1" -- "0..*" Egreso : registra >
+Usuario "0..*" -- "1" Perfil
+Usuario "1" -- "0..*" RegistroHistorial : aparece en >
+CopiaRespaldo "0..*" -- "1" Usuario : exporta <
+note right of RegistroHistorial : RN-10: no se modifica ni se borra
+@enduml

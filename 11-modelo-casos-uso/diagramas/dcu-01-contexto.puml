@@ -1,0 +1,27 @@
+@startuml dcu-01-contexto
+title DCU-01 · Contexto y actores del sistema (nivel resumen)\nSGMP · v1.0 · 22/11/2026
+left to right direction
+actor Empleado
+actor Jefe
+actor Asesora
+actor "Equipo de respaldo" as EqR <<sistema externo>>
+rectangle "SGMP - Sistema de Gestión Martin Pescador" {
+  usecase "Vender y cuadrar la caja del día" as R1
+  usecase "Controlar el inventario" as R2
+  usecase "Controlar las finanzas" as R3
+  usecase "Controlar el acceso y proteger la información" as R4
+}
+Empleado -- R1
+Jefe -- R1
+Jefe -- R2
+Asesora -- R2
+Asesora -- R3
+Jefe -- R3
+Jefe -- R4
+R4 -- EqR
+note bottom of EqR
+  Recibe por cable USB el archivo
+  de la copia de respaldo (RNF-005)
+end note
+note "Fuera del límite (acta): facturación electrónica DIAN,\nWhatsApp, datáfono y clientes (no usan el sistema)." as N1
+@enduml

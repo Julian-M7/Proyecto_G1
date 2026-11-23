@@ -1,0 +1,24 @@
+@startuml dcu-02a-ventas-caja
+title DCU-02a · Vista «Ventas y caja» (CU-01, CU-02, CU-05, CU-06, CU-07)\nSGMP · v1.0 · 22/11/2026
+left to right direction
+actor Empleado
+actor Jefe
+rectangle "SGMP" {
+  usecase "CU-07 Abrir el turno" as CU07
+  usecase "CU-01 Registrar una venta" as CU01
+  usecase "CU-05 Editar una venta" as CU05
+  usecase "CU-02 Anular una venta" as CU02
+  usecase "CU-06 Cerrar la caja" as CU06
+  usecase "CU-10 Notificar bajo stock\n(ver DCU-02b)" as CU10 #DDDDDD
+}
+Empleado -- CU07
+Empleado -- CU01
+Empleado -- CU05
+Empleado -- CU02
+Empleado -- CU06
+Jefe -- CU01
+Jefe -- CU05
+Jefe -- CU02
+Jefe -- CU06
+CU10 .> CU01 : <<extend>>\n[stock ≤ umbral mínimo]
+@enduml
