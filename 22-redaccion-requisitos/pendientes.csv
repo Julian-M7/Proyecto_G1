@@ -1,0 +1,23 @@
+﻿ID,Pendiente,Afecta,Responsable,Fecha,Estado
+PD-01,HU-01 AC2 pide cancelar el registro si falla la conexión; CU-01 4a y OB-1 dicen guardar local sin conexión.,RF-001.3; HU-01 AC2; CU-01 4a,Equipo,por fijar,Abierto
+PD-02,Rol que registra movimientos de inventario: CU-03 dice «Cajero/encargado»; P-04 es solo del jefe.,RF-005.1; CU-03; P-04,Jefe,por fijar,Abierto
+PD-03,Qué significa «si aplica» al reintegrar stock en una anulación (CU-02 paso 5).,RF-004.3; CU-02,Jefe,por fijar,Abierto
+PD-04,"Umbral de bajo stock: 10 fijo (HU-04, RF-006) o configurable por producto (CU-03 3a; el .feature usa 5).","RF-006.1, RF-006.2; GLO-23",Jefe,por fijar,Abierto
+PD-05,Periodicidad de la comprobación periódica de stock.,RF-006.2; GLO-05,Jefe,por fijar,Abierto
+PD-06,Ventana de tiempo de «hace pocos minutos» para duplicados de egreso.,RF-007.4,Asesor financiero,por fijar,Abierto
+PD-07,Tiempo máximo para mostrar una venta como registrada («inmediata»).,RNF-004,Jefe,por fijar,Abierto
+PD-08,HU-06 AC2: utilidad «inexistente» con egresos de 300.000; la resta daría −300.000.,RF-009.3; GLO-25,Asesor financiero,por fijar,Abierto
+PD-09,Flujo de caja: ¿solo efectivo o también transferencia y tarjeta?,RF-009.2; GLO-09,Asesor financiero,por fijar,Abierto
+PD-10,"Relación entre egreso, gasto y «salida» (menú P-08).",RF-009.1; GLO-07,Asesor financiero,por fijar,Abierto
+PD-11,"Hueco G4: validar RF-011 y RF-012, definir los datos de acceso, redactar «modificar usuario» y crear HU-10 (G4.4).","RF-010.2, RF-011.x, RF-012.x; GLO-31",Equipo,por fijar,Abierto
+PD-12,Origen y mecanismo de la sincronización del catálogo («la nube» u otro).,RF-001.2; GLO-20,Equipo / Jefe,por fijar,Abierto
+PD-13,"Tipo de dispositivo donde corre el sistema (celular, computador u otro).",GLO-06; RNF-001 a RNF-003,Jefe,por fijar,Abierto
+PD-14,HU-04 AC1 llama «insuficiente» al estado de bajo stock; HU-03 y M-02 usan «insuficiente» para otro caso.,"GLO-16, GLO-22",Equipo,por fijar,Abierto
+PD-15,Lista de métodos de pago válidos para egresos.,GLO-14; RF-007.1,Asesor financiero,por fijar,Abierto
+PD-16,¿La salida de stock por una venta genera un movimiento de inventario o solo un descuento?,GLO-15; RF-003.1,Jefe,por fijar,Abierto
+PD-17,Quién registra egresos: CU-04 solo tiene al asesor financiero; P-08 también da acceso al jefe.,RF-007.1; CU-04; P-08,Jefe,por fijar,Abierto
+PD-18,"Periodos de consulta: ¿solo día, semana y mes (HU-05) o rango libre (M-08 «Ingrese periodo de tiempo»)?","RF-008.1, RF-008.2; M-08",Asesor financiero,por fijar,Abierto
+PD-19,Si el sistema debe emitir factura y qué norma aplica (por confirmar con la Oficina Jurídica). El jefe ya usa una app de facturación.,GLO-27,Jefe / Oficina Jurídica,por fijar,Abierto
+PD-20,"Respaldo de los datos locales (DOL-03, descuadre de $50.000 sin rastro): qué se respalda, con qué frecuencia y dónde.",Falta RNF (HR-13),Jefe,por fijar,Abierto
+PD-21,"Alinear CU, pantallas y personas con el glosario: «rol» por «perfil», «auditoría» (CU-05) por «historial», «medio de pago» por «método de pago», «alerta» por «notificación de bajo stock».","GLO-17, GLO-10, GLO-14, GLO-16",Equipo,por fijar,Abierto
+PD-22,"Categorías de egreso y motivos de anulación y de movimiento: ¿lista cerrada o texto libre?, ¿qué valores?","GLO-30, GLO-32; RF-004.1, RF-005.1, RF-007.1",Asesor financiero (categorías) / Jefe (motivos),por fijar,Abierto
