@@ -1,0 +1,32 @@
+@startuml
+title DCL-03 · Diagrama de objetos · caso real 2 (descuadre de $50.000) instanciado en el modelo\nSGMP · v1.0 · 22/11/2026 · valores anonimizados
+object "turnoTarde : Turno" as t {
+  estado = Cerrado
+  conteoApertura = 200000
+}
+object "cierre : CierreCaja" as c {
+  saldoEfectivo = 180000
+  conteoEfectivo = 130000
+  diferencia = -50000
+  observacion = "no se sabe"
+}
+object "v1 : Venta" as v1 {
+  numeroRecibo = 20260915-014
+  metodoPago = efectivo
+  estado = Cerrada en caja
+}
+object "v2 : Venta" as v2 {
+  numeroRecibo = 20260915-015
+  metodoPago = transferencia
+  estado = Cerrada en caja
+}
+object "empleada : Usuario" as u {
+  perfil = Empleado
+}
+t -- c
+t -- v1
+t -- v2
+u -- v1
+u -- v2
+note bottom of c : Con el modelo, el jefe ve quién registró cada venta y la\ndiferencia con su observación (RN-07); antes no había nada que revisar.
+@enduml

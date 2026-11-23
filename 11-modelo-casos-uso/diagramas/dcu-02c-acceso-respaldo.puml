@@ -1,0 +1,29 @@
+@startuml dcu-02c-acceso-respaldo
+title DCU-02c · Vista «Acceso y respaldo» (CU-13 a CU-17)\nSGMP · v1.0 · 22/11/2026
+left to right direction
+actor Usuario
+actor Empleado
+actor Jefe
+actor Asesora
+actor "Equipo de respaldo" as EqR <<sistema externo>>
+Empleado --|> Usuario
+Jefe --|> Usuario
+Asesora --|> Usuario
+rectangle "SGMP" {
+  usecase "CU-13 Iniciar sesión" as CU13
+  usecase "CU-14 Dar acceso a un usuario" as CU14
+  usecase "CU-15 Retirar el acceso\na un usuario" as CU15
+  usecase "CU-16 Consultar el historial\nde auditoría" as CU16
+  usecase "CU-17 Exportar la copia\nde respaldo" as CU17
+}
+Usuario -- CU13
+Jefe -- CU14
+Jefe -- CU15
+Jefe -- CU16
+Jefe -- CU17
+CU17 -- EqR
+note bottom of CU16
+  Registrar cada operación sensible en el historial
+  es transversal (RF-015): no es un caso incluido.
+end note
+@enduml

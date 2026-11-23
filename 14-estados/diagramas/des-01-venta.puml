@@ -1,0 +1,21 @@
+@startuml
+title DES-01 · Ciclo de vida de la venta\nSGMP · v1.0 · 22/11/2026
+state "En registro" as EnRegistro
+state "Registrada" as Registrada
+state "Cerrada en caja" as Cerrada
+state "Anulada" as Anulada
+[*] --> EnRegistro : T-01 agregar producto (Empleado, CU-01)
+EnRegistro --> EnRegistro : T-02 agregar o quitar producto
+EnRegistro --> Registrada : T-03 confirmar venta [datos completos]\n/ asignar número de recibo, descontar stock, escribir historial
+EnRegistro --> [*] : T-04 descartar venta / no queda registro
+Registrada --> Registrada : T-05 editar venta [mismo turno, con motivo]\n/ guardar constancia
+Registrada --> Anulada : T-06 anular venta [con motivo; empleado: su turno · jefe: cualquiera]
+Registrada --> Cerrada : T-07 cerrar la caja (CU-06)
+Cerrada --> Anulada : T-08 anular venta [jefe, con motivo]\n/ registro compensatorio en el día
+Anulada --> [*]
+note right of Anulada
+  La venta anulada no se borra:
+  sigue en el historial (RF-015).
+  No revierte el stock (TBD-04).
+end note
+@enduml

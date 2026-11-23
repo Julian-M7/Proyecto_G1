@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1900 920" width="1900" height="920" font-family="Calibri, DejaVu Sans, Arial, sans-serif">
+<defs><marker id="ah" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0,0 10,4 0,8" fill="#1A1A1A"/></marker></defs>
+<rect width="1900" height="920" fill="white"/>
+<text x="950.0" y="48" text-anchor="middle" font-size="30" font-weight="bold" fill="#1A1A1A">Diagrama de contexto · SGMP v1.0 (Martin Pescador)</text>
+<text x="950.0" y="84" text-anchor="middle" font-size="20" fill="#6B6B6B">Usuarios a la izquierda · sistemas, dispositivos y registros vecinos a la derecha</text>
+<rect x="700" y="150" width="500" height="640" rx="28" fill="#F7F3E6" stroke="#A87B00" stroke-width="5"/>
+<text x="950.0" y="268" text-anchor="middle" font-size="52" font-weight="bold" fill="#1A1A1A">SGMP</text>
+<text x="950.0" y="326" text-anchor="middle" font-size="24" fill="#1A1A1A">Sistema de gestión de ventas,</text>
+<text x="950.0" y="360" text-anchor="middle" font-size="24" fill="#1A1A1A">inventario y finanzas</text>
+<text x="950.0" y="436" text-anchor="middle" font-size="21" fill="#6B6B6B">registrar y anular ventas</text>
+<text x="950.0" y="474" text-anchor="middle" font-size="21" fill="#6B6B6B">controlar inventario y alertas</text>
+<text x="950.0" y="512" text-anchor="middle" font-size="21" fill="#6B6B6B">registrar egresos</text>
+<text x="950.0" y="550" text-anchor="middle" font-size="21" fill="#6B6B6B">cerrar caja y reportar</text>
+<text x="950.0" y="588" text-anchor="middle" font-size="21" fill="#6B6B6B">perfiles y auditoría</text>
+<text x="950.0" y="756" text-anchor="middle" font-size="19" fill="#A87B00">límite del sistema a especificar</text>
+<rect x="30" y="150" width="310" height="120" rx="14" fill="white" stroke="#1F4E79" stroke-width="3"/>
+<text x="185.0" y="204" text-anchor="middle" font-size="21" font-weight="bold" fill="#1A1A1A">Empleada</text>
+<text x="185.0" y="242" text-anchor="middle" font-size="18" fill="#6B6B6B">cajera y mesera del local</text>
+<rect x="30" y="390" width="310" height="120" rx="14" fill="white" stroke="#1F4E79" stroke-width="3"/>
+<text x="185.0" y="444" text-anchor="middle" font-size="21" font-weight="bold" fill="#1A1A1A">Jefe / propietario</text>
+<text x="185.0" y="482" text-anchor="middle" font-size="18" fill="#6B6B6B">patrocinador del sistema</text>
+<rect x="30" y="630" width="310" height="120" rx="14" fill="white" stroke="#1F4E79" stroke-width="3"/>
+<text x="185.0" y="684" text-anchor="middle" font-size="21" font-weight="bold" fill="#1A1A1A">Asesora financiera</text>
+<text x="185.0" y="722" text-anchor="middle" font-size="18" fill="#6B6B6B">cierres diarios y semanales</text>
+<rect x="1560" y="130" width="310" height="120" rx="14" fill="white" stroke="#1F4E79" stroke-width="3"/>
+<text x="1715.0" y="184" text-anchor="middle" font-size="21" font-weight="bold" fill="#1A1A1A">Celular dedicado</text>
+<text x="1715.0" y="222" text-anchor="middle" font-size="18" fill="#6B6B6B">almacenamiento local</text>
+<rect x="1560" y="310" width="310" height="120" rx="14" fill="white" stroke="#1F4E79" stroke-width="3"/>
+<text x="1715.0" y="364" text-anchor="middle" font-size="21" font-weight="bold" fill="#1A1A1A">Copia de respaldo</text>
+<text x="1715.0" y="402" text-anchor="middle" font-size="18" fill="#6B6B6B">archivo exportable</text>
+<rect x="1560" y="490" width="310" height="120" rx="14" fill="#F2F2F2" stroke="#6B6B6B" stroke-width="3"/>
+<text x="1715.0" y="544" text-anchor="middle" font-size="21" font-weight="bold" fill="#1A1A1A">App actual</text>
+<text x="1715.0" y="582" text-anchor="middle" font-size="18" fill="#6B6B6B">se reemplaza; migración TBD</text>
+<rect x="1560" y="670" width="310" height="120" rx="14" fill="#F2F2F2" stroke="#6B6B6B" stroke-width="3"/>
+<text x="1715.0" y="724" text-anchor="middle" font-size="21" font-weight="bold" fill="#1A1A1A">Cuaderno físico</text>
+<text x="1715.0" y="762" text-anchor="middle" font-size="18" fill="#6B6B6B">se reemplaza</text>
+<line x1="340" y1="190.0" x2="700" y2="190.0" stroke="#1A1A1A" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="426.09375" y="178.0" width="187.8125" height="24" fill="white"/>
+<text x="520.0" y="196.0" text-anchor="middle" font-size="17" fill="#1A1A1A">ventas y anulaciones</text>
+<line x1="700" y1="230.0" x2="340" y2="230.0" stroke="#1A1A1A" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="392.8203125" y="218.0" width="254.359375" height="24" fill="white"/>
+<text x="520.0" y="236.0" text-anchor="middle" font-size="17" fill="#1A1A1A">saldo de cierre y stock inicial</text>
+<line x1="340" y1="430.0" x2="700" y2="430.0" stroke="#1A1A1A" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="387.15625" y="418.0" width="265.6875" height="24" fill="white"/>
+<text x="520.0" y="436.0" text-anchor="middle" font-size="17" fill="#1A1A1A">productos, usuarios, umbrales</text>
+<line x1="700" y1="470.0" x2="340" y2="470.0" stroke="#1A1A1A" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="400.9375" y="458.0" width="238.125" height="24" fill="white"/>
+<text x="520.0" y="476.0" text-anchor="middle" font-size="17" fill="#1A1A1A">alertas, reportes e historial</text>
+<line x1="340" y1="670.0" x2="700" y2="670.0" stroke="#1A1A1A" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="411.2890625" y="658.0" width="217.421875" height="24" fill="white"/>
+<text x="520.0" y="676.0" text-anchor="middle" font-size="17" fill="#1A1A1A">egresos y comprobantes</text>
+<line x1="700" y1="710.0" x2="340" y2="710.0" stroke="#1A1A1A" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="414.6875" y="698.0" width="210.625" height="24" fill="white"/>
+<text x="520.0" y="716.0" text-anchor="middle" font-size="17" fill="#1A1A1A">consolidados y reportes</text>
+<line x1="1200" y1="190.0" x2="1560" y2="190.0" stroke="#1A1A1A" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="1291.3203125" y="178.0" width="177.359375" height="24" fill="white"/>
+<text x="1380.0" y="196.0" text-anchor="middle" font-size="17" fill="#1A1A1A">registros guardados</text>
+<line x1="1200" y1="370.0" x2="1560" y2="370.0" stroke="#1A1A1A" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="1339.46875" y="358.0" width="81.0625" height="24" fill="white"/>
+<text x="1380.0" y="376.0" text-anchor="middle" font-size="17" fill="#1A1A1A">respaldo</text>
+<line x1="1560" y1="550.0" x2="1200" y2="550.0" stroke="#1A1A1A" stroke-width="3" marker-end="url(#ah)"/>
+<rect x="1281.9453125" y="538.0" width="196.109375" height="24" fill="white"/>
+<text x="1380.0" y="556.0" text-anchor="middle" font-size="17" fill="#1A1A1A">datos históricos (TBD)</text>
+<text x="950.0" y="886" text-anchor="middle" font-size="19" fill="#6B6B6B">Cada flecha que cruza el límite se especifica como interfaz en 3.1. Los clientes del local no usan el sistema (usuarios indirectos).</text>
+</svg>

@@ -1,0 +1,23 @@
+@startuml
+title DSE-02 · CU-01 «Registrar una venta» · ESC-01 · nivel 2 (componentes lógicos)\nSGMP · v1.0 · 22/11/2026
+actor Empleado
+box "SGMP"
+participant "Registro de ventas" as RV
+participant "Inventario" as INV
+participant "Historial" as HIS
+participant "Notificaciones" as NOT
+end box
+actor Jefe
+Empleado -> RV : confirmar venta (líneas, método de pago, canal, comprobante)
+RV -> RV : validar datos obligatorios y repetición
+RV -> INV : descontar stock (producto, cantidad)
+INV --> RV : stock resultante
+RV -> HIS : escribir operación (venta, usuario, fecha y hora)
+HIS --> RV : registrado
+opt stock resultante ≤ umbral mínimo
+  INV ->> NOT : producto por agotarse
+  NOT ->> Jefe : notificación de bajo stock
+end
+RV --> Empleado : venta registrada (número de recibo, total)
+note over RV, HIS : RNF-003: si algo falla antes del último retorno,\nno queda nada registrado (todo o nada)
+@enduml

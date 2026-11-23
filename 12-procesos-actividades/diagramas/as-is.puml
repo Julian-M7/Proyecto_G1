@@ -1,0 +1,50 @@
+@startuml
+title DAC-01 · Proceso actual (AS-IS): una jornada de venta y cierre de caja\nMartin Pescador · v1.0 · 22/11/2026 · reconstruido de las entrevistas de la Unidad 3
+|Jefe|
+start
+:Deja anotado en una hoja el saldo de caja del día anterior;
+note right: PA-05 hoja suelta
+|Empleada|
+:Cuenta el efectivo de la caja y lo rectifica contra la hoja;
+if (¿Es domingo o no recibió la mercancía?) then ([sí])
+  :Hace un conteo rápido del inventario;
+  note right: PA-07 sin dato previo
+else ([no])
+  :Recuerda el inventario de memoria;
+endif
+repeat
+  |Cliente|
+  :Pide productos en la caja o en la mesa;
+  |Empleada|
+  :Guarda el pedido en la mente;
+  note right: PA-02 sin orden registrada
+  |Cliente|
+  :Pide la cuenta;
+  |Empleada|
+  :Calcula el total (mente o calculadora) y cobra;
+  :Anota la venta en el cuaderno;
+  |Aplicación del celular|
+  :Registra la venta producto por producto;
+  note right: PA-01 doble registro
+  if (¿Pagó por transferencia?) then ([sí])
+    |Empleada|
+    :Toma la foto del comprobante;
+  else ([no])
+  endif
+repeat while (¿Siguen llegando clientes?) is ([sí]) not ([no: fin del turno])
+|Empleada|
+:Compara la lista del cuaderno con el resumen de la aplicación;
+note right: PA-04 8 a 15 minutos
+if (¿Cuadra con el efectivo?) then ([sí])
+  :Entrega la caja;
+else ([no])
+  :Informa la diferencia sin poder explicarla;
+  note right: PA-03 descuadre de $50.000
+endif
+|Jefe|
+:Consolida las cuentas del día;
+|Asesora|
+:Copia ingresos y egresos al cuaderno semanal;
+note right: PA-06 segundo registro
+stop
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+title DES-03 · Ciclo de vida del producto, con la región «Nivel de stock»\nSGMP · v1.0 · 22/11/2026
+state "Activo" as Activo {
+  state "Suficiente" as Suf
+  state "Por agotarse" as Por
+  state "Sin stock" as Sin
+  [*] --> Suf
+  Suf --> Por : P-01 venta o salida [stock ≤ umbral mínimo] / notificar bajo stock
+  Por --> Suf : P-02 entrada o ajuste [stock > umbral mínimo]
+  Por --> Sin : P-03 venta o salida [stock ≤ 0]
+  Sin --> Suf : P-04 entrada o ajuste [stock > umbral mínimo]
+  Sin --> Por : P-05 entrada o ajuste [0 < stock ≤ umbral mínimo] / notificar bajo stock
+}
+state "Inactivo" as Inactivo
+[*] --> Activo : T-14 crear producto (Jefe, CU-18)
+Activo --> Inactivo : T-15 desactivar producto (Jefe) / conservar historial
+Inactivo --> Activo : T-16 reactivar producto (Jefe)
+note bottom of Activo
+  «Por agotarse» y «Sin stock» son condiciones del stock,
+  no etapas del ciclo de vida: por eso van en una región.
+  La venta con stock insuficiente se advierte y se permite (RF-023).
+end note
+@enduml

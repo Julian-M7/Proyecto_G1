@@ -1,0 +1,13 @@
+@startuml
+title DES-02 · Ciclo de vida del turno (caja del turno)\nSGMP · v1.0 · 22/11/2026
+state "Abierto" as Abierto
+state "En cierre" as EnCierre
+state "Cerrado" as Cerrado
+[*] --> Abierto : T-09 abrir turno (Empleado, CU-07)\n/ mostrar saldo de cierre y stock; registrar conteo de apertura
+Abierto --> EnCierre : T-10 solicitar cierre [turno sin cierre] / calcular totales
+EnCierre --> Abierto : T-11 cancelar cierre
+EnCierre --> Cerrado : T-12 registrar cierre [conteo ingresado y, si hay diferencia, observación]\n/ registrar cierre, generar copia, cerrar sesión
+Abierto --> Abierto : T-13 abrir turno siguiente [este turno sin cierre]\n/ avisar al empleado y al jefe (RF-030)
+Cerrado --> [*]
+note right of Cerrado : Un segundo «solicitar cierre» se rechaza (RF-029).
+@enduml

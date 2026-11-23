@@ -1,0 +1,20 @@
+@startuml dcu-02a-v0.1-errores
+title DCU-02a · Vista «Ventas y caja» · v0.1 (antes de la revisión, con hallazgos H-03 a H-06)\nSGMP · 22/11/2026
+left to right direction
+actor Empleada
+actor Jefe
+actor "Base de datos" as BD
+rectangle "SGMP" {
+  usecase "Gestionar ventas" as GV
+  usecase "Registrar en historial" as RH
+  usecase "Cerrar caja" as CC
+  usecase "Notificar bajo stock" as NB
+}
+Empleada -- GV
+Jefe -- GV
+Empleada -- CC
+GV .> RH : <<include>>
+CC .> RH : <<include>>
+GV .> NB : <<extend>>
+GV -- BD
+@enduml
