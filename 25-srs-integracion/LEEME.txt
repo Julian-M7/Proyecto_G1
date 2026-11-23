@@ -1,0 +1,14 @@
+ENTREGABLES CARPETA 25
+
+1. matriz-trazabilidad-completa.docx
+2. informe-inspeccion-srs.docx
+3. SC-01-hu01-conexion.docx
+4. SC-02-umbral-bajo-stock.docx
+5. prueba-tres-preguntas.md
+6. rubrica-autoevaluada.md (provisional: no se recibió plantilla oficial)
+7. pendientes-nuevos-carpeta25.md
+
+Se integraron las actualizaciones de carpeta 25 con los contenidos previos.
+No se inventaron el SRS integrado, el informe del verificador, las horas de reunión,
+las firmas ni las decisiones del comité. SC-01 y SC-02 continúan pendientes.
+La matriz incluye CP como método de verificación donde no existe asignación CP-nn.
