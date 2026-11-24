@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframes Anotados Móvil - Martín Pescador</title>
+  <style>
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    body {
+      background-color: #d1d5db;
+      padding: 30px;
+      color: #1f2937;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 35px;
+      justify-content: center;
+    }
+    /* Lienzo estilo plantilla móvil */
+    .wf-canvas {
+      width: 375px;
+      background: #f9fafb;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Barra de metadatos superior (igual al ejemplo) */
+    .wf-top-meta {
+      background: #e5e7eb;
+      color: #6b7280;
+      padding: 6px 12px;
+      font-size: 10px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #d1d5db;
+    }
+    /* Header de la app */
+    .app-header {
+      background: #ffffff;
+      padding: 12px 16px;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #111827;
+    }
+    .brand-logo {
+      width: 24px;
+      height: 24px;
+      background: #d1d5db;
+      border-radius: 4px;
+    }
+    .menu-btn {
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 11px;
+      color: #4b5563;
+    }
+    .sub-header {
+      background: #f3f4f6;
+      padding: 5px 16px;
+      font-size: 10px;
+      color: #6b7280;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    /* Contenedor principal */
+    .wf-body {
+      padding: 16px;
+      flex: 1;
+    }
+    .page-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #111827;
+      margin: 0 0 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .page-desc {
+      font-size: 11px;
+      color: #6b7280;
+      margin: 0 0 14px 0;
+      line-height: 1.4;
+    }
+    /* Tarjetas blancas internas (como en el ejemplo) */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #374151;
+      margin: 0 0 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .step-num {
+      background: #e5e7eb;
+      color: #374151;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+    /* Formularios limpios */
+    .form-group { margin-bottom: 10px; }
+    label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 4px;
+    }
+    .req { color: #dc2626; }
+    input, select {
+      width: 100%;
+      padding: 7px 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      background: #ffffff;
+      font-size: 12px;
+      color: #6b7280;
+    }
+    input[readonly] { background: #f3f4f6; }
+    .helper-text {
+      font-size: 10px;
+      color: #9ca3af;
+      margin-top: 3px;
+    }
+    .callout-box {
+      background: #fefce8;
+      border: 1px solid #fde047;
+      border-radius: 4px;
+      padding: 7px 9px;
+      font-size: 10px;
+      color: #854d0e;
+      margin-top: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .row-2 { display: flex; gap: 8px; }
+    .col { flex: 1; }
+    /* Botones */
+    .btn {
+      width: 100%;
+      padding: 9px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      border: 1px solid #d1d5db;
+      background: #ffffff;
+      color: #374151;
+      margin-top: 6px;
+    }
+    .btn-primary {
+      background: #4b5563;
+      color: #ffffff;
+      border-color: #4b5563;
+    }
+    .btn-disabled {
+      background: #e5e7eb;
+      color: #9ca3af;
+      border-color: #d1d5db;
+    }
+    /* Tablas limpias */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+    }
+    th {
+      background: #f3f4f6;
+      color: #4b5563;
+      font-weight: 600;
+      text-align: left;
+      padding: 6px 8px;
+      border-bottom: 1px solid #d1d5db;
+    }
+    td {
+      padding: 7px 8px;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+    }
+    .row-alert { background: #fef2f2; color: #991b1b; }
+    /* Círculos rojos de anotación (Exactos a la captura) */
+    .pin {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 15px;
+      height: 15px;
+      background-color: #dc2626;
+      color: #ffffff;
+      border-radius: 50%;
+      font-size: 9px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== WF-P02: REGISTRAR VENTA ==================== -->
+  <div class="wf-canvas">
+    <div class="wf-top-meta">
+      <span>WF-P02 · Registrar venta · móvil · estado inicial</span>
+      <span>v1.0 · datos de ejemplo</span>
+    </div>
+    <div class="app-header">
+      <div class="brand">
+        <div class="brand-logo"></div>
+        <span>Martín Pescador <span style="font-weight:400; color:#6b7280;">| Ventas</span></span>
+      </div>
+      <div class="menu-btn">☰ Menú <span class="pin">1</span></div>
+    </div>
+    <div class="sub-header">
+      <span>Sesión: Cajera_01</span>
+      <span>13/11/2026 · 14:30</span>
+    </div>
+    <div class="wf-body">
+      <h1 class="page-title">Registro de ventas <span class="pin">2</span></h1>
+      <p class="page-desc">Diligencie los datos de los productos y el medio de pago. Los campos con * son obligatorios.</p>
+
+      <div class="card">
+        <div class="section-title"><span class="step-num">1</span> Detalles del producto</div>
+        <div class="form-group">
+          <label>Producto <span class="req">*</span> <span class="pin">3</span></label>
+          <select><option>Elija un producto...</option></select>
+          <div class="helper-text">Muestra productos disponibles en inventario</div>
+        </div>
+
+        <div class="row-2">
+          <div class="col form-group">
+            <label>Precio unitario <span class="pin">4</span></label>
+            <input type="text" value="$ 0.00" readonly>
+          </div>
+          <div class="col form-group">
+            <label>Cantidad <span class="req">*</span> <span class="pin">5</span></label>
+            <input type="number" placeholder="Ej. 2">
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title"><span class="step-num">2</span> Pago y confirmación</div>
+        <div class="form-group">
+          <label>Medio de pago <span class="req">*</span> <span class="pin">6</span></label>
+          <select><option>Elija medio de pago...</option></select>
+        </div>
+
+        <button class="btn btn-disabled">Confirmar venta <span class="pin">7</span></button>
+        <div class="helper-text" style="text-align:center;">Inhabilitado hasta completar campos obligatorios</div>
+
+        <div class="callout-box">
+          <span class="pin">8</span>
+          <span>Al confirmar muestra <strong>M-01 Venta registrada</strong> o alerta <strong>M-02 Stock insuficiente</strong>.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== WF-P04: GESTIONAR INVENTARIO ==================== -->
+  <div class="wf-canvas">
+    <div class="wf-top-meta">
+      <span>WF-P04 · Gestionar inventario · móvil · estado inicial</span>
+      <span>v1.0 · datos de ejemplo</span>
+    </div>
+    <div class="app-header">
+      <div class="brand">
+        <div class="brand-logo"></div>
+        <span>Martín Pescador <span style="font-weight:400; color:#6b7280;">| Jefe</span></span>
+      </div>
+      <div class="menu-btn">☰ Menú <span class="pin">1</span></div>
+    </div>
+    <div class="sub-header">
+      <span>Sesión: Jefe_Admin</span>
+      <span>13/11/2026</span>
+    </div>
+    <div class="wf-body">
+      <h1 class="page-title">Inventario <span class="pin">2</span></h1>
+      <p class="page-desc">Consulta de disponibilidad actual de productos a la venta.</p>
+
+      <div class="card">
+        <div class="form-group" style="margin-bottom:0;">
+          <label>Filtrar por producto <span class="pin">3</span></label>
+          <div class="row-2">
+            <input type="text" placeholder="Buscar nombre...">
+            <button class="btn btn-primary" style="width:auto; margin-top:0; padding:0 14px;">Filtrar <span class="pin">4</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:0; overflow:hidden;">
+        <table>
+          <thead>
+            <tr>
+              <th>Producto <span class="pin">5</span></th>
+              <th>Precio</th>
+              <th>Disp.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>café</td>
+              <td>$ 36.000</td>
+              <td>20 lb</td>
+            </tr>
+            <tr class="row-alert">
+              <td>Empanadas <span class="pin">6</span></td>
+              <td>$ 3.500</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>Torta chocolate</td>
+              <td>$ 5.000</td>
+              <td>11</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    
