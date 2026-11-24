@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototipo Funcional v0.1 - Martín Pescador</title>
+  <link href="https://googleapis.com" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+  <div class="phone-container">
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-badge">MP</div>
+        <span>Martín Pescador</span>
+      </div>
+      <button id="btn-menu" class="btn-menu" aria-label="Abrir menú">☰ Pantallas</button>
+    </header>
+
+    <nav id="nav-drawer" class="nav-drawer hidden">
+      <button class="nav-item active" data-target="screen-p02">P-02 · Registrar venta (Cajera)</button>
+      <button class="nav-item" data-target="screen-p04">P-04 · Gestionar inventario (Jefe)</button>
+      <button class="nav-item" data-target="screen-p10">P-10 · Reporte financiero (Asesora)</button>
+    </nav>
+
+    <div class="session-bar">
+      <span id="session-role">Rol: Cajera_01</span>
+      <span>22/11/2026</span>
+    </div>
+
+    <main id="screen-p02" class="screen active">
+      <h1 class="title-screen">&lt;&lt;Registro de ventas&gt;&gt;</h1>
+      <p class="subtitle">Diligencie los datos de venta. Campos con <span class="req">*</span> obligatorios.</p>
+
+      <div id="p02-banner" class="alert-banner hidden" role="alert"></div>
+
+      <form id="form-venta" novalidate>
+        <div class="card">
+          <h2 class="title-section">1. Detalles del producto</h2>
+
+          <div class="form-group">
+            <label for="producto">Producto <span class="req">*</span></label>
+            <select id="producto" name="producto">
+              <option value="">Elija un producto...</option>
+              <option value="PRD-01">Café molido 500 gr (Libra)</option>
+              <option value="PRD-02">Torta chocolate</option>
+              <option value="PRD-03">Empanada</option>
+              <option value="PRD-04">Gaseosa</option>
+            </select>
+            <span id="err-producto" class="error-msg"></span>
+            <span class="helper-text">Muestra stock disponible en inventario</span>
+          </div>
+
+          <div class="row-2">
+            <div class="col form-group">
+              <label for="precio_unitario">Precio unitario</label>
+              <input type="text" id="precio_unitario" value="$ 0" readonly>
+            </div>
+            <div class="col form-group">
+              <label for="cantidad">Cantidad <span class="req">*</span></label>
+              <input type="number" id="cantidad" name="cantidad" placeholder="Ej. 2" min="1" step="1">
+              <span id="err-cantidad" class="error-msg"></span>
+            </div>
+          </div>
+
+          <div class="total-box">
+            <span>Total a cobrar:</span>
+            <strong id="total-venta">$ 0</strong>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="title-section">2. Pago y confirmación</h2>
+
+          <div class="form-group">
+            <label for="metodo_pago">Método de pago <span class="req">*</span></label>
+            <select id="metodo_pago" name="metodo_pago">
+              <option value="">Elija medio de pago...</option>
+              <option value="Efectivo">Efectivo</option>
+              <option value="Transferencia">Transferencia</option>
+            </select>
+            <span id="err-metodo" class="error-msg"></span>
+          </div>
+
+          <button type="submit" id="btn-confirmar-venta" class="btn btn-primary" disabled>
+            Confirmar venta
+          </button>
+          <button type="button" id="btn-limpiar-venta" class="btn btn-secondary">
+            Limpiar campos
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <main id="screen-p04" class="screen hidden">
+      <h1 class="title-screen">&lt;&lt;Inventario&gt;&gt;</h1>
+      <p class="subtitle">Consulta de disponibilidad y alertas de bajo stock (&le; 10 unid.).</p>
+
+      <div class="card">
+        <div class="form-group" style="margin-bottom: 0;">
+          <label for="filtro_producto">Filtrar por producto</label>
+          <div class="row-2">
+            <input type="text" id="filtro_producto" placeholder="Buscar nombre..." maxlength="50">
+            <button type="button" id="btn-filtrar" class="btn btn-primary btn-inline">Filtrar</button>
+          </div>
+          <span id="err-filtro" class="error-msg"></span>
+        </div>
+      </div>
+
+      <div class="card table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th class="num">Precio</th>
+              <th class="num">Disp.</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-inventario"></tbody>
+        </table>
+      </div>
+
+      <div class="alert-banner alert-warning">
+        <span>!</span>
+        <div>
+          <strong>Alerta de Bajo Stock (RF-006):</strong> Los productos con 10 unidades o menos se resaltan automáticamente.
+        </div>
+      </div>
+    </main>
+
+    
+    <main id="screen-p10" class="screen hidden">
+      <div class="title-row">
+        <h1 class="title-screen">Reporte (Nov. 2026)</h1>
+        <button type="button" id="btn-volver-p09" class="btn-back">&lt;&lt;Volver&gt;&gt;</button>
+      </div>
+      <p class="subtitle">Consolidado financiero (excluye ventas anuladas según RN-04).</p>
+
+      <!-- KPIs -->
+      <div class="kpi-row">
+        <div class="kpi-box">
+          <span class="kpi-label">Ingresos</span>
+          <strong id="kpi-ingresos" class="kpi-val text-sec">$ 0</strong>
+        </div>
+        <div class="kpi-box">
+          <span class="kpi-label">Egresos</span>
+          <strong id="kpi-egresos" class="kpi-val text-acc">$ 0</strong>
+        </div>
+        <div class="kpi-box kpi-highlight">
+          <span class="kpi-label">Balance</span>
+          <strong id="kpi-balance" class="kpi-val">$ 0</strong>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="title-section">Comparativo Ingresos vs. Egresos</h2>
+        <div id="chart-bars" class="chart-area"></div>
+        <div class="legend">
+          <span><i class="dot dot-in"></i>Ingresos válidos</span>
+          <span><i class="dot dot-out"></i>Egresos</span>
+        </div>
+      </div>
+
+      <div class="card table-card">
+        <div class="card-header-inner">Detalle de movimientos</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Tipo</th>
+              <th>Concepto</th>
+              <th class="num">Valor</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-movimientos"></tbody>
+        </table>
+      </div>
+
+      <button type="button" id="btn-imprimir" class="btn btn-primary">🖨 Imprimir reporte</button>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
